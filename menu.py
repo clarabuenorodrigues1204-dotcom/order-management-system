@@ -4,11 +4,12 @@ def menu_principal():
 ╔══════════════════════════════════════════════╗
 ║      SISTEMA DE PEDIDOS - BUENO'S STORE      ║
 ╠══════════════════════════════════════════════╣
-║  [1] - Criar pedido                          ║
-║  [2] - Listar pedidos                        ║
-║  [3] - Consultar pedidos                     ║
-║  [4] - Alterar status do pedido              ║
-║  [5] - Sair                                  ║
+║  [1] - Cadastrar Produto                     ║
+║  [2] - Criar pedido                          ║
+║  [3] - Listar pedidos                        ║
+║  [4] - Consultar pedidos                     ║
+║  [5] - Alterar status do pedido              ║
+║  [6] - Sair                                  ║
 ╠══════════════════════════════════════════════╣
 """)
     while True:
@@ -19,7 +20,7 @@ def menu_principal():
             print('Digite apenas números! [1 a 5]')
             continue
         
-        if  1 <= escolha_usuario <= 5:
+        if  1 <= escolha_usuario <= 6:
             print("╚══════════════════════════════════════════════╝")
             return escolha_usuario
         else:
