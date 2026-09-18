@@ -6,10 +6,10 @@ def mostra_ficha(pedido):
     print(f"║   Nº DO PEDIDO: {pedido['Nº do pedido']:<41}║")
 
     print("╠" + "═" * 58 + "╣")
-    print("║ DADOS DO CLIENTE" + " " * 40 + "║")
+    print("║  DADOS DO CLIENTE" + " " * 40 + "║")
     print("║" + " " * 58 + "║")
 
-    print(f"║  Cliente:     {pedido['Cliente']:<42}║")
+    print(f"║  Cliente:     {pedido['Cliente']:<42} ║")
     print(f"║  CPF:         {pedido['CPF']:<42}║")
     print(f"║  E-mail:      {pedido['Email']:<42}║")
     print(f"║  Telefone:    {pedido['Telefone']:<42}║")

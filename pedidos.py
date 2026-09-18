@@ -52,7 +52,7 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
         except ValueError:
             print("APENAS NÚMEROS!")
             
-    #Adição de produto ao pedido       
+    #Adição dos produtos ao pedido       
 
     for _ in range(quant_produtos):
         
@@ -72,13 +72,14 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
                 print('APENAS NÚMEROS')
                 continue
             
-
         produtos_escolhidos = catalogo_produtos[escolha_user - 1]
 
         pedidos_comprados.append(produtos_escolhidos.copy())
+        print(pedidos_comprados)
 
-    for item in pedidos_comprados:
-        pedido["Lista de produtos"] = item["Nome"]
+        pedido['Lista de produtos'] = []
+        for item in pedidos_comprados:
+            pedido['Lista de produtos'].append(item["Nome"])
 
     pedido["Status"] = "Pendente"
 
@@ -99,7 +100,10 @@ def listar(lista_pedidos):
         print("═" * 48)
         print(f" Nº do pedido: {pedido['Nº do pedido']}")
         print(f" Cliente:      {pedido['Cliente']}")
-        print(f" Produtos:     {pedido['Lista de produtos']}")
+        print(f" Endereço:     {pedido['Endereço']}")
+        print(f" Cidade:       {pedido['Cidade']}")
+        print(f" Estado:       {pedido['Estado']}")
+        print(f" Produtos:     {', '.join(pedido['Lista de produtos'])}")
         print(f" Status:       {pedido['Status']}")
         print("═" * 48)
 
@@ -125,7 +129,7 @@ def alterar_status(lista_pedidos):
     #Verifica se o ID dado pelo usuário existe na lista, e verifica se o que foi digitado é um número ou não
     while True:
         try:
-            consulta = int(input('Insira o número do pedido: '))
+            consulta = int(input('Insira o ID do pedido: '))
             
         except ValueError:
             
@@ -136,7 +140,6 @@ def alterar_status(lista_pedidos):
 
         if pedido != None:
             mostra_ficha.mostra_ficha(pedido)
-            continue
         
         escolha_alterar = input('Deseja alterar o status do pedido? [S/N] ').strip().upper()
 
