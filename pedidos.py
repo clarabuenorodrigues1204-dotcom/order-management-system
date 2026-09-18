@@ -3,6 +3,8 @@ system('cls')
 
 import produto
 import ficha_cliente
+import buscar_pedidos
+import mostra_ficha
 #Criação de Pedidos
 
 def criar_pedidos(lista_pedidos, catalogo_produtos):
@@ -112,76 +114,40 @@ def consultar_pedido(lista_pedidos):
             print('Digite apenas números!')
             continue
         
-        pedido_encontrado = False
-        
-        #Mostra o pedido encontrado
-        for n_pedido in lista_pedidos:
-            
-            if consulta == n_pedido['Nº do pedido']:
-                
-                pedido_encontrado = True
-                
-                print("═" * 48)
-                print(f" PEDIDO Nº {n_pedido['Nº do pedido']}")
-                print("═" * 48)
-                print(f" Cliente:   {n_pedido['Cliente']}")
-                print(f" Produtos:  {', '.join(n_pedido['Lista de produtos'])}")
-                print(f" Status:    {n_pedido['Status']}")
-                print("═" * 48)
-                
-                break
-            
-        if pedido_encontrado:
+        pedido = buscar_pedidos.buscar_pedidos(consulta, lista_pedidos)
+               
+        if pedido != None:            
+            mostra_ficha.mostra_ficha(pedido)
             break
-        print('Não há pedido com esse número! Tente novamente')  
-
+                       
 #Altera o status do pedido que começa com o status "pendente"
 def alterar_status(lista_pedidos):
     #Verifica se o ID dado pelo usuário existe na lista, e verifica se o que foi digitado é um número ou não
     while True:
-
         try:
             consulta = int(input('Insira o número do pedido: '))
+            
         except ValueError:
+            
             print('Digite apenas números!')
             continue
 
-        pedido_encontrado = False
+        pedido = buscar_pedidos.buscar_pedidos(consulta,lista_pedidos)
 
-        for n_pedido in lista_pedidos:
-
-            if consulta == n_pedido['Nº do pedido']:
-                pedido_encontrado = True
-
-                print("═" * 48)
-                print(f" PEDIDO Nº {n_pedido['Nº do pedido']}")
-                print("═" * 48)
-                print(f" Cliente:   {n_pedido['Cliente']}")
-                print(f" Produtos:  {n_pedido['Lista de produtos']}")
-                print(f" Status:    {n_pedido['Status']}")
-                print("═" * 48)
-
-                break
-
-        if not pedido_encontrado:
-            print('Não há pedido com esse número! Tente novamente.')
+        if pedido != None:
+            mostra_ficha.mostra_ficha(pedido)
             continue
-
-        escolha_alterar = input(
-            'Deseja alterar o status do pedido? [S/N] '
-        ).strip().upper()
+        
+        escolha_alterar = input('Deseja alterar o status do pedido? [S/N] ').strip().upper()
 
         while escolha_alterar != 'S' and escolha_alterar != 'N':
-            escolha_alterar = input(
-                'Digite apenas [S/N]. Deseja alterar o status do pedido? '
-            ).strip().upper()
+            
+            escolha_alterar = input('Digite apenas [S/N]. Deseja alterar o status do pedido? ').strip().upper()
 
         if escolha_alterar == 'N':
             return
         #Opções de status para ser alterado
-        print("""
-PARA QUAL STATUS SERÁ ALTERADO:
-
+        print("""PARA QUAL STATUS SERÁ ALTERADO:
 [1] - Pendente
 [2] - Preparando
 [3] - Enviado
@@ -202,16 +168,16 @@ PARA QUAL STATUS SERÁ ALTERADO:
                 print('Digite apenas opções válidas!')
 
         if escolha_usuario == 1:
-            n_pedido['Status'] = 'Pendente'
+            pedido['Status'] = 'Pendente'
 
         elif escolha_usuario == 2:
-            n_pedido['Status'] = 'Preparando'
+            pedido['Status'] = 'Preparando'
 
         elif escolha_usuario == 3:
-            n_pedido['Status'] = 'Enviado'
+            pedido['Status'] = 'Enviado'
 
         elif escolha_usuario == 4:
-            n_pedido['Status'] = 'Entregue'
+            pedido['Status'] = 'Entregue'
 
         print('Status alterado com sucesso!')
         return
