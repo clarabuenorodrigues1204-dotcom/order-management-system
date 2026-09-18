@@ -2,6 +2,8 @@ from os import system
 system('cls')
 
 import produto
+import ficha_cliente
+#Criação de Pedidos
 
 def criar_pedidos(lista_pedidos, catalogo_produtos):
     
@@ -9,6 +11,8 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
 
     pedido = {}
     pedidos_comprados = []
+
+    #Gerador de ID do pedido
 
     numero_pedido = randint(100000, 999999)
   
@@ -27,10 +31,11 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
         else:
             break
 
-
+    #Cadastro do cliente
+    
     pedido["Nº do pedido"] = numero_pedido
 
-    pedido["Cliente"] = input("Digite o nome do(a) cliente: ").title().strip()
+    ficha_cliente.ficha_cliente(pedido)
 
     while True:
         try:
@@ -44,6 +49,8 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
         
         except ValueError:
             print("APENAS NÚMEROS!")
+            
+    #Adição de produto ao pedido       
 
     for _ in range(quant_produtos):
         
@@ -77,7 +84,7 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
 
     print("Pedido cadastrado com sucesso!")
 
-
+#Lista os pedidos cadastrados no sistema
 def listar(lista_pedidos):
 
     if len(lista_pedidos) == 0:
@@ -94,7 +101,9 @@ def listar(lista_pedidos):
         print(f" Status:       {pedido['Status']}")
         print("═" * 48)
 
+#Consulta um pedido específico utilizando o ID gerado
 def consultar_pedido(lista_pedidos):
+    #Verifica se o ID dado pelo usuário existe na lista, e verifica se o que foi digitado é um número ou não
     while True:
         try:
             consulta = int(input('Insira o Nº do pedido: '))
@@ -105,6 +114,7 @@ def consultar_pedido(lista_pedidos):
         
         pedido_encontrado = False
         
+        #Mostra o pedido encontrado
         for n_pedido in lista_pedidos:
             
             if consulta == n_pedido['Nº do pedido']:
@@ -125,8 +135,9 @@ def consultar_pedido(lista_pedidos):
             break
         print('Não há pedido com esse número! Tente novamente')  
 
+#Altera o status do pedido que começa com o status "pendente"
 def alterar_status(lista_pedidos):
-
+    #Verifica se o ID dado pelo usuário existe na lista, e verifica se o que foi digitado é um número ou não
     while True:
 
         try:
@@ -167,7 +178,7 @@ def alterar_status(lista_pedidos):
 
         if escolha_alterar == 'N':
             return
-
+        #Opções de status para ser alterado
         print("""
 PARA QUAL STATUS SERÁ ALTERADO:
 
