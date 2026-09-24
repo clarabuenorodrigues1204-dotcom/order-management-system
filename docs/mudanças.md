@@ -7,3 +7,4 @@
 - Adicionar campo de endereço ao criar o pedido
 - Identificar padrões entre as funções e fazer uma função para esses padrões
 - Modificar menus de interface utilizando a biblioteca "RICH"
+- Separar os arquivos por responsabilidade para evitar que a raiz do projeto fique desorganizada.
