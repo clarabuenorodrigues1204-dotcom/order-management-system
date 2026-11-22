@@ -1,4 +1,5 @@
 def ficha_cliente(pedido):
+    
     pedido["Cliente"] = input('Digite o nome do(a) cliente: ').title().strip()
     pedido["CPF"] = input('CPF: ')
     pedido["Email"] = input('E-mail: ').strip()
