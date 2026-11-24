@@ -1,6 +1,5 @@
 # 📦 Order Management System
 
-> ⚠️ **Projeto em desenvolvimento:** este sistema ainda está sendo construído e aprimorado. Algumas funcionalidades podem apresentar bugs, comportamentos inesperados ou sofrer alterações nas próximas versões.
 
 ## 📌 Sobre o projeto
 
@@ -43,6 +42,7 @@ Cada pedido possui informações como:
 - **Número do pedido**
 - **Cliente**
 - **Lista de produtos**
+- **Total**
 - **Status**
 
 O número do pedido é gerado automaticamente com **6 dígitos**.
@@ -71,10 +71,29 @@ Os produtos armazenam informações como:
 order-management-system/
 │
 ├── main.py
-├── menu.py
-├── pedidos.py
-├── produto.py
-└── README.md
+├── README.md
+├── .gitignore
+│
+├── docs/
+│   │
+│   ├── mudanças.md
+│   ├── relatorio_tecnico.md
+│   ├── Sistema_de_Pedidos_Store_Obsidian.md
+│   │
+├── sistema/│  
+│   │
+│   ├── menu.py
+│   │
+│   ├── pedidos.py
+│   ├── produtos.py
+│   └── clientes.py
+│
+├── ficha_cliente/│   
+│   │
+│   ├── ficha_cliente.py
+│   ├── mostra_ficha.py
+│
+└
 ```
 
 ### `main.py`
@@ -92,6 +111,18 @@ Contém as principais funcionalidades relacionadas ao gerenciamento dos pedidos.
 ### `produto.py`
 
 Contém as funcionalidades relacionadas ao cadastro e exibição dos produtos.
+
+### `busca_pedidos.py`
+
+Localiza um pedido pelo número de identificação e retorna seus dados, caso exista.
+
+### `ficha_cliente.py`
+
+Coleta e armazena os dados cadastrais do cliente no dicionário do pedido.
+
+### `mostra_ficha.py`
+
+Responsável por exibir os detalhes do pedido e os dados do cliente ao selecionar a opção 4 no menu de pedidos.
 
 ## 🖥️ Menu principal
 
@@ -140,19 +171,6 @@ Depois execute:
 python main.py
 ```
 
-## 🚧 Próximas melhorias
-
-Algumas melhorias planejadas para o projeto incluem:
-
-- Melhorar e padronizar as validações;
-- Aprimorar o tratamento de erros;
-- Melhorar a organização dos módulos;
-- Corrigir bugs encontrados durante os testes;
-- Melhorar a interface do terminal;
-- Aprimorar o gerenciamento de produtos;
-- Evoluir o controle dos pedidos;
-- Refatorar partes do código conforme novos conceitos forem aprendidos;
-- Avaliar futuramente o uso de bibliotecas para melhorar a interface do terminal.
 
 ## 📚 Contexto
 

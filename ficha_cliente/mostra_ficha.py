@@ -23,7 +23,9 @@ def mostra_ficha(pedido):
 
     for numero, produto in enumerate(pedido["Lista de produtos"], start=1):
         print(f"║  {numero:02}. {produto:<51}║")
-
+        
+    print("╠" + "═" * 58 + "╣")
+    print(f"║  TOTAL DO PEDIDO: R$ {pedido['Total']:<37.2f}║")
     print("╠" + "═" * 58 + "╣")
     print(f"║  STATUS: {pedido['Status']:<48}║")
     print("╚" + "═" * 58 + "╝")

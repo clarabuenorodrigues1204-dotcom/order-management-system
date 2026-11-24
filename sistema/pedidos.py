@@ -10,6 +10,8 @@ import ficha_cliente.mostra_ficha as mostra_ficha
 def criar_pedidos(lista_pedidos, catalogo_produtos):
     
     from random import randint
+    
+    valor_total = 0
 
     pedido = {}
     pedidos_comprados = []
@@ -75,8 +77,7 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
         produtos_escolhidos = catalogo_produtos[escolha_user - 1]
 
         pedidos_comprados.append(produtos_escolhidos.copy())
-        print(pedidos_comprados)
-
+        
         pedido['Lista de produtos'] = []
         for item in pedidos_comprados:
             pedido['Lista de produtos'].append(item["Nome"])
@@ -84,7 +85,10 @@ def criar_pedidos(lista_pedidos, catalogo_produtos):
     pedido["Status"] = "Pendente"
     
     #AQUI VAI FICAR O TOTAL DO PEDIDO
-    
+    for item in pedidos_comprados:
+
+        valor_total += item["Valor"]
+    pedido["Total"] = valor_total
     lista_pedidos.append(pedido.copy())
 
     print("Pedido cadastrado com sucesso!")
@@ -107,6 +111,8 @@ def listar(lista_pedidos):
         print(f" Estado:       {pedido['Estado']}")
         print(f" Produtos:     {', '.join(pedido['Lista de produtos'])}")
         print(f" Status:       {pedido['Status']}")
+        print(f" Total:       {pedido['Total']}")
+        
         print("═" * 48)
 
 #Consulta um pedido específico utilizando o ID gerado
@@ -153,10 +159,10 @@ def alterar_status(lista_pedidos):
             return
         #Opções de status para ser alterado
         print("""PARA QUAL STATUS SERÁ ALTERADO:
-    [1] - Pendente
-    [2] - Preparando
-    [3] - Enviado
-    [4] - Entregue
+[1] - Pendente
+[2] - Preparando
+[3] - Enviado
+[4] - Entregue
 """)
 
         while True:

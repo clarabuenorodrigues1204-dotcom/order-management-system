@@ -3,6 +3,7 @@ def cadastrar_produto(catalogo_produtos):
     produto = {}
     produto['Nome'] = input('Nome do produto: ').strip().title()
     
+    
     while True:
         
         try:
