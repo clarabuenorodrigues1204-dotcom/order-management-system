@@ -1,9 +1,9 @@
 from os import system
 system('cls')
 
-import menu
-import pedidos
-import produto
+import sistema.menu as menu
+import sistema.pedidos as pedidos
+import sistema.produto as produto
 
 lista_pedidos = []
 catalogo_produtos = []
